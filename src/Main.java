@@ -15,6 +15,8 @@ public class Main {
     public static final String LIST_CONTACTS  = "LC";
     public static final String QUIT           = "Q";
 
+    public static final String CHECK_CONTACTS = "EP";
+
     //Constantes que definem as mensagens para o utilizador
     public static final String CONTACT_EXISTS = "contactBook.Contact already exists.";
     public static final String NAME_NOT_EXIST = "contactBook.Contact does not exist.";
@@ -53,6 +55,9 @@ public class Main {
                 case LIST_CONTACTS:
                     listAllContacts(cBook);
                     break;
+                case CHECK_CONTACTS:
+                    checkContacts(cBook);
+                    break;
                 default:
                     System.out.println(COMMAND_ERROR);
             }
@@ -63,6 +68,14 @@ public class Main {
         System.out.println();
         in.close();
     }
+
+    private static void checkContacts(ContactBook cBook) {
+               if(cBook.checkContacts()) {
+               System.out.println("There are contacts that share phone numbers.");
+               } else {
+                   System.out.println("All contacts have different phone numbers.");
+               }
+            }
 
     private static String getCommand(Scanner in) {
         String input;
