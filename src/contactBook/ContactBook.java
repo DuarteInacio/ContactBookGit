@@ -86,6 +86,16 @@ public class ContactBook {
         return result;
     }
 
+    public String getNameWithNumber(int phone){
+        int i = 0;
+        while (i<counter)
+            if (contacts[i].getPhone() == phone) {
+                return contacts[i].getName();
+            }else
+                i++;
+        return null;
+    }
+
     private void resize() {
         Contact tmp[] = new Contact[2*contacts.length];
         for (int i=0;i<counter; i++)
